@@ -9,6 +9,7 @@ import ClassStep from './components/steps/ClassStep'
 import AttributesStep from './components/steps/AttributesStep'
 import LifestyleStep from './components/steps/LifestyleStep'
 import GearStep from './components/steps/GearStep'
+import CharacterSheetStep from './components/steps/CharacterSheetStep'
 import { calcHP, calcAC, calcKarma } from './utils/derived'
 
 import classes from '../data/classes.json'
@@ -169,6 +170,8 @@ export default function App() {
           ac={ac}
         />
       }
+      case 'sheet':
+        return <CharacterSheetStep character={character} onStartOver={handleStartOver} />
       default:
         return <div className="text-stone-400">Step: {currentStep.label}</div>
     }
