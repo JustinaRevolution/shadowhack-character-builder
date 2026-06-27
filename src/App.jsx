@@ -7,6 +7,8 @@ import RoleStep from './components/steps/RoleStep'
 import ContactStep from './components/steps/ContactStep'
 import ClassStep from './components/steps/ClassStep'
 import AttributesStep from './components/steps/AttributesStep'
+import LifestyleStep from './components/steps/LifestyleStep'
+import GearStep from './components/steps/GearStep'
 import { calcHP, calcAC, calcKarma } from './utils/derived'
 
 import classes from '../data/classes.json'
@@ -143,6 +145,30 @@ export default function App() {
           selected={character.contact}
           onSelect={c => setField('contact', c)}
         />
+      case 'lifestyle': {
+        const karma = calcKarma(character.cyberware)
+        return <LifestyleStep
+          lifestyle={character.lifestyle}
+          cyberware={character.cyberware}
+          cyberwareOptions={cyberware}
+          onLifestyleChange={v => setField('lifestyle', v)}
+          onCyberwareChange={v => setField('cyberware', v)}
+          karma={karma}
+        />
+      }
+      case 'gear': {
+        const dex = character.attributes.DEX ?? 0
+        const ac = calcAC(character.armor, dex)
+        return <GearStep
+          weapons={gear.weapons}
+          armors={gear.armor}
+          selectedWeapon={character.weapon}
+          selectedArmor={character.armor}
+          onWeaponChange={v => setField('weapon', v)}
+          onArmorChange={v => setField('armor', v)}
+          ac={ac}
+        />
+      }
       default:
         return <div className="text-stone-400">Step: {currentStep.label}</div>
     }
