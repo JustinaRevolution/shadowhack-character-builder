@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import { useCharacter } from './hooks/useCharacter'
 import ProgressBar from './components/ProgressBar'
+import NameStep from './components/steps/NameStep'
+import BackgroundStep from './components/steps/BackgroundStep'
+import RoleStep from './components/steps/RoleStep'
+import ContactStep from './components/steps/ContactStep'
 
 import classes from '../data/classes.json'
 import backgrounds from '../data/backgrounds.json'
@@ -78,8 +82,35 @@ export default function App() {
   }
 
   function renderStep() {
-    // Step components wired in as each task completes
-    return <div className="text-stone-400">Step: {currentStep.label}</div>
+    switch (currentStep.key) {
+      case 'name':
+        return <NameStep
+          name={character.name}
+          playerName={character.playerName}
+          onNameChange={v => setField('name', v)}
+          onPlayerNameChange={v => setField('playerName', v)}
+        />
+      case 'background':
+        return <BackgroundStep
+          backgrounds={backgrounds}
+          selected={character.background}
+          onSelect={b => setField('background', b)}
+        />
+      case 'role':
+        return <RoleStep
+          roles={roles}
+          selected={character.role}
+          onSelect={r => setField('role', r)}
+        />
+      case 'contact':
+        return <ContactStep
+          contacts={contacts}
+          selected={character.contact}
+          onSelect={c => setField('contact', c)}
+        />
+      default:
+        return <div className="text-stone-400">Step: {currentStep.label}</div>
+    }
   }
 
   const isLastStep = stepIndex === ALL_STEPS.length - 1
