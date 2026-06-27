@@ -39,7 +39,7 @@ export default function CharacterSheetStep({ character, onStartOver }) {
   return (
     <div className="space-y-6 print:text-black print:bg-white">
       {/* Header */}
-      <div className="flex justify-between items-start print-hidden">
+      <div className="flex justify-between items-start">
         <h2 className="text-2xl font-bold text-amber-300">Character Sheet</h2>
         <div className="flex gap-3 print:hidden">
           <button onClick={() => window.print()} className="px-4 py-2 bg-stone-700 hover:bg-stone-600 border border-stone-500 rounded text-sm text-amber-100">

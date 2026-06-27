@@ -20,11 +20,6 @@ import cyberware from '../data/cyberware.json'
 import gear from '../data/gear.json'
 import spells from '../data/spells.json'
 
-// Step components — imported here after each step task
-// import NameStep from './components/steps/NameStep'
-// import ClassStep from './components/steps/ClassStep'
-// ... etc
-
 const ALL_STEPS = [
   { key: 'name',       label: 'Name' },
   { key: 'class',      label: 'Class' },
