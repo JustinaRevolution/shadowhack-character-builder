@@ -5,10 +5,6 @@ function fmtMod(v) {
   return v >= 0 ? `+${v}` : `${v}`
 }
 
-const STAT_FULL = {
-  STR: 'Strength',  DEX: 'Dexterity', CON: 'Constitution',
-  INT: 'Intelligence', WIS: 'Wisdom', CHA: 'Charisma',
-}
 const STAT_USE = {
   STR: 'Melee attack & damage, strength athletics',
   DEX: 'Ranged attacks & damage, rogue skills, acrobatics, DEX saves',
@@ -127,7 +123,7 @@ export default function CharacterSheetStep({ character, onStartOver }) {
               {weapon && <div>Weapon: {weapon.name} ({weapon.damage})</div>}
               {armor && armor.name !== 'None' && <div>Armor: {armor.name}</div>}
               {cyberware && <div>Cyberware: {cyberware.name}</div>}
-              {!weapon && !armor && !cyberware && <span className="text-stone-600">—</span>}
+              {!weapon && (!armor || armor.name === 'None') && !cyberware && <span className="text-stone-600">—</span>}
             </div>
           </div>
 
