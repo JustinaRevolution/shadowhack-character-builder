@@ -5,6 +5,7 @@ import NameStep from './components/steps/NameStep'
 import BackgroundStep from './components/steps/BackgroundStep'
 import RoleStep from './components/steps/RoleStep'
 import ContactStep from './components/steps/ContactStep'
+import ClassStep from './components/steps/ClassStep'
 
 import classes from '../data/classes.json'
 import backgrounds from '../data/backgrounds.json'
@@ -89,6 +90,20 @@ export default function App() {
           playerName={character.playerName}
           onNameChange={v => setField('name', v)}
           onPlayerNameChange={v => setField('playerName', v)}
+        />
+      case 'class':
+        return <ClassStep
+          classes={classes}
+          selected={character.characterClass}
+          subChoice={character.subChoice}
+          spells={character.spells}
+          onSelect={handleClassSelect}
+          onSubChoiceChange={v => setField('subChoice', v)}
+          onSpellToggle={spell => {
+            const has = character.spells.some(s => s.name === spell.name)
+            has ? removeSpell(spell.name) : setSpell(spell)
+          }}
+          allSpells={spells}
         />
       case 'background':
         return <BackgroundStep
