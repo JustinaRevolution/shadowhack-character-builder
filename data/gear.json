@@ -1,0 +1,14 @@
+{
+  "weapons": [
+    { "name": "Unarmed", "damage": "STR modifier only", "examples": "", "notes": "Unarmed and light weapons can be used as finesse weapons." },
+    { "name": "Light Weapon", "damage": "1D6", "examples": "Knife, small melee weapon, pistol (10 uses before reload)", "notes": "Can be used as finesse weapon." },
+    { "name": "Medium Weapon", "damage": "2D6", "examples": "SMG (medium range, 10 bursts before reload), large melee weapon (sword, axe)", "notes": "" },
+    { "name": "Heavy Weapon", "damage": "3D6", "examples": "Assault rifle (long range, 6 bursts, slow reload — 1 round), two-handed melee weapon", "notes": "Firearms: disadvantage when targeting foes at melee range." }
+  ],
+  "armor": [
+    { "name": "None", "bonus": 0, "heavy": false, "description": "No armor. AC = 10 + DEX modifier." },
+    { "name": "Light Armor", "bonus": 2, "heavy": false, "description": "Stealthy — can look like regular clothes. AC = 10 + DEX + 2." },
+    { "name": "Medium Armor", "bonus": 4, "heavy": false, "description": "Less stealthy — noticeable with a perception check. AC = 10 + DEX + 4." },
+    { "name": "Heavy Armor", "bonus": 0, "heavy": true, "description": "AC = 20 flat (DEX modifier not applied). Cannot be hidden." }
+  ]
+}

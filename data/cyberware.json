@@ -1,0 +1,10 @@
+[
+  { "name": "Wired Reflexes", "karma_cost": 2, "description": "Use your reaction to make one counter-attack in response to an attack against you." },
+  { "name": "Bionic Arm", "karma_cost": 2, "description": "Unarmed damage goes to 2D6. The arm can hold one gadget that fits into an arm. Add +1 to armor class per arm." },
+  { "name": "Synthetic Muscle", "karma_cost": 2, "description": "Add +1 to Strength and Dexterity modifiers." },
+  { "name": "Dermal Plating", "karma_cost": 2, "description": "Steel plates provide medium armor (+4 AC). Does not stack with worn armor." },
+  { "name": "Spurs", "karma_cost": 2, "description": "Berserker-style claws inflict 2D6 damage. Can be used as a finesse weapon." },
+  { "name": "Cyber Eyes", "karma_cost": 2, "description": "Advantage on vision-based perception checks. Ultravision: thermal, dark, and low-light vision." },
+  { "name": "Cyber Ears", "karma_cost": 2, "description": "Advantage on hearing-based perception checks. Know the location of unseen creatures that make sound within 60ft." },
+  { "name": "Enhanced Memory", "karma_cost": 2, "description": "Choose one additional background. You gain advantage on its tests in addition to your primary background." }
+]

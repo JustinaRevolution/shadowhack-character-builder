@@ -1,0 +1,12 @@
+[
+  { "id": 1, "name": "Military", "description": "Advantage on tests involving combat tactics, military protocols, and handling firearms in a professional context." },
+  { "id": 2, "name": "Religious", "description": "Advantage on tests involving theology, religious ritual, spiritual counsel, and occult doctrine." },
+  { "id": 3, "name": "Medicine", "description": "Advantage on tests involving first aid, surgery, pharmaceuticals, and diagnosing conditions." },
+  { "id": 4, "name": "Covert Operative", "description": "Advantage on tests involving infiltration, surveillance, running covers, and intelligence tradecraft." },
+  { "id": 5, "name": "Engineer / Sciences", "description": "Advantage on tests involving electronics, mechanics, chemistry, and technical problem-solving." },
+  { "id": 6, "name": "Law Enforcement", "description": "Advantage on tests involving criminal procedure, interrogation, jurisdiction, and identifying criminal patterns." },
+  { "id": 7, "name": "Psychology", "description": "Advantage on tests involving reading emotional states, behavioral manipulation, and mental health situations." },
+  { "id": 8, "name": "Magic / Occult", "description": "Advantage on tests involving arcane lore, ritual magic, identifying supernatural phenomena, and occult history." },
+  { "id": 9, "name": "Detective", "description": "Advantage on tests involving investigation, connecting evidence, solving crimes, and criminal psychology." },
+  { "id": 10, "name": "Entertainment", "description": "Advantage on tests involving performance, media industry knowledge, celebrity culture, and public relations." }
+]

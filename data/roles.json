@@ -1,0 +1,8 @@
+[
+  { "name": "Faceman", "karma_cost": 2, "passive": false, "description": "Spend 2 karma to pass a charm or deception test as long as you have a good cover story or identity." },
+  { "name": "Strategist", "karma_cost": 3, "passive": false, "description": "Pay 3 karma to play out a flashback. Roll 1D6 — on 4, 5, or 6 it occurs in your favor. On a fail, something bad happens." },
+  { "name": "Master Detective", "karma_cost": 1, "passive": false, "description": "Pay 1 karma to automatically pass an investigation or perception test." },
+  { "name": "Connected", "karma_cost": 2, "passive": false, "description": "Pay 2 karma. If there is a crowd around, you have a friend among them who can help. They may have a price." },
+  { "name": "Lie Detector", "karma_cost": 0, "passive": true, "description": "Passive — no karma cost. You always know when someone is lying to you." },
+  { "name": "Hard to Kill", "karma_cost": 2, "passive": false, "description": "Pay 2 karma as a reaction to being attacked. Take half damage from all attacks until your next turn." }
+]

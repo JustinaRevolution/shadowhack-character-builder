@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Marksman",
+    "hp_per_level": 8,
+    "description": "Firearms specialist who can attack twice with their chosen weapon type.",
+    "level_1_feature": "Choose one class of firearms. You can attack twice with it. You can also quick reload firearms.",
+    "sub_choice": {
+      "type": "firearm",
+      "label": "Choose your firearm type",
+      "options": ["Pistols", "SMGs", "Rifles"]
+    }
+  },
+  {
+    "name": "Melee Expert",
+    "hp_per_level": 10,
+    "description": "Close-quarters fighter with specialized martial techniques.",
+    "level_1_feature": "Choose a fighting move from the list below.",
+    "sub_choice": {
+      "type": "fighting_move",
+      "label": "Choose a fighting move",
+      "options": [
+        { "name": "Hadoukan", "description": "Chi-based ranged attack (60ft range), inflicts 2D6 damage. No spell check required." },
+        { "name": "Crouching Tiger", "description": "Make 30ft jumps and feather fall 60 feet for free." },
+        { "name": "Blind Fighting", "description": "Blind sight with a radius of 30ft." },
+        { "name": "Steel Fist", "description": "Punches inflict 2D6 damage. Combined with Iron Leg: 3D6 magical damage." },
+        { "name": "Iron Leg", "description": "Kicks inflict 2D6 damage. Combined with Steel Fist: 3D6 magical damage." },
+        { "name": "Iron Toad", "description": "You are always considered to be wearing medium armor." },
+        { "name": "Whirlwind", "description": "Make a second attack when making unarmed or melee attacks." }
+      ]
+    }
+  },
+  {
+    "name": "Elemental Avatar",
+    "hp_per_level": 7,
+    "description": "Elemental caster creating bolt, cube, explosion, and wall effects. Spell DC = 10 + chosen stat.",
+    "level_1_feature": "Create a Bolt using your chosen element on your turn (120ft, 2D6, no check required).",
+    "sub_choice": {
+      "type": "elemental",
+      "label_element": "Choose your element",
+      "elements": ["Lightning", "Fire", "Frost"],
+      "label_stat": "Choose your spell stat",
+      "spell_stats": ["INT", "WIS", "CHA"]
+    }
+  },
+  {
+    "name": "Wage Mage",
+    "hp_per_level": 6,
+    "mp_per_level": 5,
+    "description": "Street mage casting 1st-3rd level spells via mana points (5 MP/level). Spell DC = 10 + attribute.",
+    "level_1_feature": "Can cast 1st level spells (cost 2 MP). Learn 2 spells of a level you can cast.",
+    "spellcasting": true,
+    "sub_choice": {
+      "type": "spells",
+      "label": "Choose your starting spells",
+      "count": 2,
+      "tier": 1
+    }
+  },
+  {
+    "name": "Espionage Agent",
+    "hp_per_level": 8,
+    "description": "Expert in stealth, deception, lockpicking, codebreaking, acrobatics, sleight of hand, and perception.",
+    "level_1_feature": "Rogue skills (Acrobatics, Sleight of Hand, Stealth, Perception, Deception, Lockpicking, Codebreaking) rolled with advantage. Backstab: attacking an unaware target deals double damage (one attack only).",
+    "sub_choice": null
+  }
+]

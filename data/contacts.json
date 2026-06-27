@@ -1,0 +1,8 @@
+[
+  { "name": "Mr. McMahon", "description": "Uses an alias. Provides legal or illegal jobs involving people with power and/or money. Treats all interactions as strictly business." },
+  { "name": "Fixer", "description": "Need a passport? A way in? Weapons? Supplies? Your fixer has got you covered — for a price." },
+  { "name": "Law Enforcer", "description": "Works within a city or corporate police force. Can give you the scoop or get you out of trouble." },
+  { "name": "Street Doc", "description": "In hospitals, gunshots are always reported to security. A street doc keeps things quiet. Can also install cyberware." },
+  { "name": "Hacker", "description": "Can forge your way into high-security areas through a few clicks of a keyboard." },
+  { "name": "Vlogger", "description": "Gives you the scoop on all things entertainment and fashion." }
+]
