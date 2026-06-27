@@ -6,6 +6,8 @@ import BackgroundStep from './components/steps/BackgroundStep'
 import RoleStep from './components/steps/RoleStep'
 import ContactStep from './components/steps/ContactStep'
 import ClassStep from './components/steps/ClassStep'
+import AttributesStep from './components/steps/AttributesStep'
+import { calcHP, calcAC, calcKarma } from './utils/derived'
 
 import classes from '../data/classes.json'
 import backgrounds from '../data/backgrounds.json'
@@ -42,7 +44,12 @@ export default function App() {
     switch (currentStep.key) {
       case 'name':       return character.name.trim().length > 0
       case 'class':      return !!character.characterClass && hasCompletedSubChoice()
-      case 'attributes': return Object.values(character.attributes).every(v => v !== null)
+      case 'attributes': {
+        const assigned = Object.values(character.attributes).filter(v => v !== null)
+        const pool = [3, 3, 2, 1, 0, -1].sort().join()
+        const actual = [...assigned].sort().join()
+        return assigned.length === 6 && actual === pool
+      }
       case 'background': return !!character.background
       case 'role':       return !!character.role
       case 'contact':    return !!character.contact
@@ -105,6 +112,19 @@ export default function App() {
           }}
           allSpells={spells}
         />
+      case 'attributes': {
+        const dex = character.attributes.DEX ?? 0
+        const hp = calcHP(character.characterClass)
+        const ac = calcAC(character.armor, dex)
+        const karma = calcKarma(character.cyberware)
+        return <AttributesStep
+          attributes={character.attributes}
+          onAttributeChange={setAttribute}
+          hp={hp}
+          ac={ac}
+          karma={karma}
+        />
+      }
       case 'background':
         return <BackgroundStep
           backgrounds={backgrounds}
