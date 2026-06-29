@@ -113,7 +113,7 @@ export default function App() {
       case 'attributes': {
         const dex = character.attributes.DEX ?? 0
         const hp = calcHP(character.characterClass)
-        const ac = calcAC(character.armor, dex)
+        const ac = calcAC(character.armor, dex, character.cyberware)
         const karma = calcKarma(character.cyberware)
         return <AttributesStep
           attributes={character.attributes}
@@ -154,7 +154,7 @@ export default function App() {
       }
       case 'gear': {
         const dex = character.attributes.DEX ?? 0
-        const ac = calcAC(character.armor, dex)
+        const ac = calcAC(character.armor, dex, character.cyberware)
         return <GearStep
           weapons={gear.weapons}
           armors={gear.armor}

@@ -30,6 +30,21 @@ test('calcAC with null armor defaults to 10', () => {
   expect(calcAC(null, 2)).toBe(12)
 })
 
+const dermal = { name: 'Dermal Plating', karma_cost: 2 }
+
+test('calcAC with dermal plating and no armor adds +4', () => {
+  expect(calcAC(noArmor, 2, dermal)).toBe(16)
+  expect(calcAC(null, 1, dermal)).toBe(15)
+})
+
+test('calcAC with dermal plating and light armor uses dermal (4 > 2)', () => {
+  expect(calcAC(light, 2, dermal)).toBe(16)
+})
+
+test('calcAC with dermal plating and heavy armor uses heavy (20 flat)', () => {
+  expect(calcAC(heavy, 3, dermal)).toBe(20)
+})
+
 test('calcKarma is 6 with no cyberware', () => {
   expect(calcKarma(null)).toBe(6)
 })

@@ -29,7 +29,7 @@ export default function CharacterSheetStep({ character, onStartOver }) {
 
   const dex = attributes.DEX ?? 0
   const hp  = calcHP(cls)
-  const ac  = calcAC(armor, dex)
+  const ac  = calcAC(armor, dex, cyberware)
   const karma = calcKarma(cyberware)
   const mp  = calcMP(cls)
   const lifestyleLabel = lifestyle === 'medium' ? 'Medium — 6 months, own apartment, car/bike, 1,000 credits'

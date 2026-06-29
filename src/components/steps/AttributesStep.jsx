@@ -25,6 +25,17 @@ function remainingPool(attributes) {
   return pool
 }
 
+function availableForStat(stat, attributes) {
+  const pool = [...POOL]
+  for (const [key, val] of Object.entries(attributes)) {
+    if (key !== stat && val !== null) {
+      const i = pool.indexOf(val)
+      if (i !== -1) pool.splice(i, 1)
+    }
+  }
+  return pool
+}
+
 export default function AttributesStep({ attributes, onAttributeChange, hp, ac, karma }) {
   const pool = remainingPool(attributes)
   const poolLabel = pool.length === 0
@@ -53,6 +64,7 @@ export default function AttributesStep({ attributes, onAttributeChange, hp, ac, 
       <div className="space-y-3">
         {STATS.map(stat => {
           const current = attributes[stat]
+          const available = availableForStat(stat, attributes)
           return (
             <div key={stat} className="flex items-center gap-4">
               <span className="w-10 font-bold text-amber-200">{stat}</span>
@@ -65,7 +77,7 @@ export default function AttributesStep({ attributes, onAttributeChange, hp, ac, 
                 className="bg-stone-800 border border-stone-600 rounded px-2 py-1 text-amber-100 w-20"
               >
                 <option value="">—</option>
-                {POOL.map((v, i) => (
+                {available.map((v, i) => (
                   <option key={i} value={v}>{fmtMod(v)}</option>
                 ))}
               </select>
