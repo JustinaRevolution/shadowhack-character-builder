@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 
 const CHARS = 'ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789ABCDEF'
 const FONT_SIZE = 16
+const FRAME_SKIP = 2 // advance columns every 3rd frame (~20fps effective)
 
 export default function MatrixRain() {
   const canvasRef = useRef(null)
@@ -16,6 +17,7 @@ export default function MatrixRain() {
 
     let columns = []
     let animId
+    let frame = 0
 
     function init() {
       canvas.width = window.innerWidth
@@ -27,22 +29,25 @@ export default function MatrixRain() {
     }
 
     function draw() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-      ctx.font = `${FONT_SIZE}px monospace`
+      frame++
+      if (frame % (FRAME_SKIP + 1) === 0) {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        ctx.font = `${FONT_SIZE}px monospace`
 
-      columns.forEach((y, i) => {
-        const x = i * FONT_SIZE
-        ctx.fillStyle = '#ffffff'
-        ctx.fillText(CHARS[Math.floor(Math.random() * CHARS.length)], x, y * FONT_SIZE)
-        ctx.fillStyle = '#00ff41'
-        ctx.fillText(CHARS[Math.floor(Math.random() * CHARS.length)], x, (y - 1) * FONT_SIZE)
+        columns.forEach((y, i) => {
+          const x = i * FONT_SIZE
+          ctx.fillStyle = '#ffffff'
+          ctx.fillText(CHARS[Math.floor(Math.random() * CHARS.length)], x, y * FONT_SIZE)
+          ctx.fillStyle = '#00ff41'
+          ctx.fillText(CHARS[Math.floor(Math.random() * CHARS.length)], x, (y - 1) * FONT_SIZE)
 
-        if (y * FONT_SIZE > canvas.height && Math.random() > 0.975) {
-          columns[i] = 0
-        }
-        columns[i]++
-      })
+          if (y * FONT_SIZE > canvas.height && Math.random() > 0.975) {
+            columns[i] = 0
+          }
+          columns[i]++
+        })
+      }
 
       animId = requestAnimationFrame(draw)
     }
