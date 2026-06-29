@@ -44,19 +44,23 @@ export default function AttributesStep({ attributes, onAttributeChange, hp, ac, 
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-amber-300 mb-2">Attributes</h2>
-      <p className="text-stone-400 text-sm mb-2">
+      <h2
+        className="text-2xl font-bold text-[#00ff41] mb-2 glitch glitch-slow"
+        data-text="Attributes"
+      >
+        Attributes
+      </h2>
+      <p className="text-[#008f11] text-sm mb-2">
         Assign these modifiers to your six stats:{' '}
-        <span className="text-amber-300">+3, +3, +2, +1, +0, -1</span>
+        <span className="text-[#00ff41]">+3, +3, +2, +1, +0, -1</span>
       </p>
-      <p className="text-stone-500 text-xs mb-6">{poolLabel}</p>
+      <p className="text-[#003b00] text-xs mb-6">{poolLabel}</p>
 
-      {/* Derived stats preview */}
       <div className="flex gap-4 mb-6 text-center">
         {[['HP', hp ?? '—'], ['AC', ac ?? '—'], ['Karma', karma ?? '—']].map(([lbl, val]) => (
-          <div key={lbl} className="bg-stone-800 border border-stone-600 rounded px-4 py-2">
-            <div className="text-xs text-stone-400">{lbl}</div>
-            <div className="text-xl font-bold text-amber-100">{val}</div>
+          <div key={lbl} className="bg-black/80 border border-[#003b00] rounded px-4 py-2">
+            <div className="text-xs text-[#008f11]">{lbl}</div>
+            <div className="text-xl font-bold text-green-200">{val}</div>
           </div>
         ))}
       </div>
@@ -67,21 +71,21 @@ export default function AttributesStep({ attributes, onAttributeChange, hp, ac, 
           const available = availableForStat(stat, attributes)
           return (
             <div key={stat} className="flex items-center gap-4">
-              <span className="w-10 font-bold text-amber-200">{stat}</span>
+              <span className="w-10 font-bold text-green-300">{stat}</span>
               <select
                 value={current ?? ''}
                 onChange={e => {
                   const val = e.target.value === '' ? null : Number(e.target.value)
                   onAttributeChange(stat, val)
                 }}
-                className="bg-stone-800 border border-stone-600 rounded px-2 py-1 text-amber-100 w-20"
+                className="bg-black/80 border border-[#003b00] rounded px-2 py-1 text-green-200 w-20"
               >
                 <option value="">—</option>
                 {available.map((v, i) => (
                   <option key={i} value={v}>{fmtMod(v)}</option>
                 ))}
               </select>
-              <span className="text-xs text-stone-500 flex-1">{STAT_USE[stat]}</span>
+              <span className="text-xs text-[#003b00] flex-1">{STAT_USE[stat]}</span>
             </div>
           )
         })}

@@ -22,5 +22,5 @@ test('calls onSelect with background object when clicked', async () => {
 
 test('highlights selected background', () => {
   render(<BackgroundStep backgrounds={backgrounds} selected={backgrounds[0]} onSelect={() => {}} />)
-  expect(screen.getByText('Military').closest('button')).toHaveClass('border-amber-400')
+  expect(screen.getByText('Military').closest('button')).toHaveClass('border-[#00ff41]')
 })
