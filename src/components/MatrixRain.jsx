@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 const CHARS = 'ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789ABCDEF'
 const FONT_SIZE = 16
-const FRAME_SKIP = 2 // advance columns every 3rd frame (~20fps effective)
+const FRAME_SKIP = 5 // advance columns every 6th frame (~10fps effective)
 
 export default function MatrixRain() {
   const canvasRef = useRef(null)
