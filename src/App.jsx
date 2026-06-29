@@ -190,7 +190,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black text-green-400 font-mono">
       <MatrixRain />
-      <div className="scanlines" />
+      <div className="scanlines print:hidden" />
       <div className="relative z-10 max-w-3xl mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <h1

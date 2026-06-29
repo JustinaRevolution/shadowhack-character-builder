@@ -56,5 +56,5 @@ export default function MatrixRain() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="fixed inset-0 z-0 block" />
+  return <canvas ref={canvasRef} className="fixed inset-0 z-0 block print:hidden" />
 }

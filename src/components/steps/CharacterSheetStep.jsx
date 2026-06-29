@@ -44,7 +44,12 @@ export default function CharacterSheetStep({ character, onStartOver }) {
     <div className={`space-y-6 print:text-black print:bg-white ${mounted ? 'glitch-once' : ''}`}>
       {/* Header */}
       <div className="flex justify-between items-start">
-        <h2 className="text-2xl font-bold text-[#00ff41]">Character Sheet</h2>
+        <h2
+          className="text-2xl font-bold text-[#00ff41] glitch glitch-slow"
+          data-text="Character Sheet"
+        >
+          Character Sheet
+        </h2>
         <div className="flex gap-3 print:hidden">
           <button onClick={() => window.print()} className="px-4 py-2 bg-zinc-900 hover:bg-zinc-800 border border-[#003b00] rounded text-sm text-green-200">
             Print

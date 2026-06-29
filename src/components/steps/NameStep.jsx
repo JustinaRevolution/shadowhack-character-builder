@@ -3,13 +3,13 @@ export default function NameStep({ name, playerName, onNameChange, onPlayerNameC
     <div>
       <h2
         className="text-2xl font-bold text-[#00ff41] mb-6 glitch glitch-slow"
-        data-text="Name"
+        data-text="Who Are You?"
       >
-        Name
+        Who Are You?
       </h2>
       <div className="space-y-4">
         <div>
-          <label className="block text-[#008f11] text-sm mb-1">Character Name</label>
+          <label className="block text-[#008f11] text-sm mb-1">Character Name <span className="text-[#00ff41]">*</span></label>
           <input
             type="text"
             value={name}
