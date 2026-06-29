@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react'
 
 const CHARS = 'ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789ABCDEF'
-const FONT_SIZE = 16
-const FRAME_SKIP = 19 // advance columns every 20th frame (~3fps effective)
+const FONT_SIZE = 24
+const COL_SPACING = 72  // one column slot every 72px — ~20 slots on a 1440px screen
+const DENSITY = 0.35    // ~35% of slots active at any time (~7 streams)
+const FRAME_SKIP = 19   // advance every 20th frame (~3fps)
 
 export default function MatrixRain() {
   const canvasRef = useRef(null)
@@ -22,9 +24,11 @@ export default function MatrixRain() {
     function init() {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
-      const count = Math.floor(canvas.width / FONT_SIZE)
+      const count = Math.floor(canvas.width / COL_SPACING)
       columns = Array.from({ length: count }, () =>
-        Math.floor(Math.random() * -(canvas.height / FONT_SIZE))
+        Math.random() < DENSITY
+          ? Math.floor(Math.random() * -(canvas.height / FONT_SIZE))
+          : -(canvas.height / FONT_SIZE) * 20
       )
     }
 
@@ -36,14 +40,14 @@ export default function MatrixRain() {
         ctx.font = `${FONT_SIZE}px monospace`
 
         columns.forEach((y, i) => {
-          const x = i * FONT_SIZE
+          const x = i * COL_SPACING
           ctx.fillStyle = '#ffffff'
           ctx.fillText(CHARS[Math.floor(Math.random() * CHARS.length)], x, y * FONT_SIZE)
           ctx.fillStyle = '#00ff41'
           ctx.fillText(CHARS[Math.floor(Math.random() * CHARS.length)], x, (y - 1) * FONT_SIZE)
 
-          if (y * FONT_SIZE > canvas.height && Math.random() > 0.975) {
-            columns[i] = 0
+          if (y * FONT_SIZE > canvas.height && Math.random() > 0.99) {
+            columns[i] = Math.floor(Math.random() * -(canvas.height / FONT_SIZE))
           }
           columns[i]++
         })
