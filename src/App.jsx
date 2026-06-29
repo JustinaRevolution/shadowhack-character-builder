@@ -188,11 +188,11 @@ export default function App() {
   const isLastStep = stepIndex === ALL_STEPS.length - 1
 
   return (
-    <div className="min-h-screen bg-black text-green-400 font-mono">
+    <div className="min-h-screen print:min-h-0 bg-black text-green-400 font-mono">
       <MatrixRain />
       <div className="scanlines print:hidden" />
-      <div className="relative z-10 max-w-3xl mx-auto px-4 py-8">
-        <div className="text-center mb-8">
+      <div className="relative z-10 max-w-3xl mx-auto px-4 py-8 print:p-0">
+        <div className="text-center mb-8 print:hidden">
           <h1
             className="text-4xl font-bold text-[#00ff41] glitch text-glow tracking-[0.3em]"
             data-text="SHADOWHACK"
@@ -202,13 +202,15 @@ export default function App() {
           <p className="text-[#008f11] mt-1 text-sm">Character Builder</p>
         </div>
 
-        <ProgressBar steps={ALL_STEPS.map(s => s.label)} current={stepIndex} />
+        <div className="print:hidden">
+          <ProgressBar steps={ALL_STEPS.map(s => s.label)} current={stepIndex} />
+        </div>
 
-        <div className={`mb-8 min-h-96 ${glitching ? 'glitching' : ''}`}>
+        <div className={`mb-8 min-h-96 print:min-h-0 print:mb-0 ${glitching ? 'glitching' : ''}`}>
           {renderStep()}
         </div>
 
-        <div className="flex justify-between items-center border-t border-[#003b00] pt-6">
+        <div className="flex justify-between items-center border-t border-[#003b00] pt-6 print:hidden">
           <button
             onClick={back}
             disabled={stepIndex === 0}
