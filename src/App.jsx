@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useCharacter } from './hooks/useCharacter'
 import ProgressBar from './components/ProgressBar'
+import MatrixRain from './components/MatrixRain'
 import NameStep from './components/steps/NameStep'
 import BackgroundStep from './components/steps/BackgroundStep'
 import RoleStep from './components/steps/RoleStep'
@@ -35,8 +36,14 @@ const ALL_STEPS = [
 export default function App() {
   const { character, setField, setAttribute, setSpell, removeSpell, reset } = useCharacter()
   const [stepIndex, setStepIndex] = useState(0)
+  const [glitching, setGlitching] = useState(false)
 
   const currentStep = ALL_STEPS[stepIndex]
+
+  function triggerGlitch() {
+    setGlitching(true)
+    setTimeout(() => setGlitching(false), 600)
+  }
 
   function canProceed() {
     switch (currentStep.key) {
@@ -61,10 +68,10 @@ export default function App() {
   function hasCompletedSubChoice() {
     const sub = character.characterClass?.sub_choice
     if (!sub) return true
-    if (sub.type === 'firearm')      return !!character.subChoice?.value
+    if (sub.type === 'firearm')       return !!character.subChoice?.value
     if (sub.type === 'fighting_move') return !!character.subChoice?.value
-    if (sub.type === 'elemental')    return !!character.subChoice?.element && !!character.subChoice?.spellStat
-    if (sub.type === 'spells')       return character.spells.length >= sub.count
+    if (sub.type === 'elemental')     return !!character.subChoice?.element && !!character.subChoice?.spellStat
+    if (sub.type === 'spells')        return character.spells.length >= sub.count
     return true
   }
 
@@ -75,11 +82,17 @@ export default function App() {
   }
 
   function next() {
-    if (stepIndex < ALL_STEPS.length - 1) setStepIndex(i => i + 1)
+    if (stepIndex < ALL_STEPS.length - 1) {
+      triggerGlitch()
+      setStepIndex(i => i + 1)
+    }
   }
 
   function back() {
-    if (stepIndex > 0) setStepIndex(i => i - 1)
+    if (stepIndex > 0) {
+      triggerGlitch()
+      setStepIndex(i => i - 1)
+    }
   }
 
   function handleStartOver() {
@@ -168,31 +181,38 @@ export default function App() {
       case 'sheet':
         return <CharacterSheetStep character={character} onStartOver={handleStartOver} />
       default:
-        return <div className="text-stone-400">Step: {currentStep.label}</div>
+        return <div className="text-[#008f11]">Step: {currentStep.label}</div>
     }
   }
 
   const isLastStep = stepIndex === ALL_STEPS.length - 1
 
   return (
-    <div className="min-h-screen bg-stone-900 text-amber-100">
-      <div className="max-w-3xl mx-auto px-4 py-8">
+    <div className="min-h-screen bg-black text-green-400 font-mono">
+      <MatrixRain />
+      <div className="scanlines" />
+      <div className="relative z-10 max-w-3xl mx-auto px-4 py-8">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-amber-400">ShadowHack</h1>
-          <p className="text-stone-500 mt-1">Character Builder</p>
+          <h1
+            className="text-4xl font-bold text-[#00ff41] glitch text-glow tracking-[0.3em]"
+            data-text="SHADOWHACK"
+          >
+            SHADOWHACK
+          </h1>
+          <p className="text-[#008f11] mt-1 text-sm">Character Builder</p>
         </div>
 
         <ProgressBar steps={ALL_STEPS.map(s => s.label)} current={stepIndex} />
 
-        <div className="mb-8 min-h-96">
+        <div className={`mb-8 min-h-96 ${glitching ? 'glitching' : ''}`}>
           {renderStep()}
         </div>
 
-        <div className="flex justify-between items-center border-t border-stone-700 pt-6">
+        <div className="flex justify-between items-center border-t border-[#003b00] pt-6">
           <button
             onClick={back}
             disabled={stepIndex === 0}
-            className="px-6 py-2 bg-stone-700 hover:bg-stone-600 border border-stone-500 rounded text-amber-100 disabled:opacity-30 transition-colors"
+            className="px-6 py-2 bg-black/80 hover:bg-zinc-900 border border-[#003b00] rounded text-green-400 disabled:opacity-30 transition-colors glitch-hover"
           >
             Back
           </button>
@@ -200,7 +220,7 @@ export default function App() {
             <button
               onClick={next}
               disabled={!canProceed()}
-              className="px-6 py-2 bg-amber-600 hover:bg-amber-500 rounded text-stone-900 font-semibold disabled:opacity-30 transition-colors"
+              className="px-6 py-2 bg-green-600 hover:bg-green-500 rounded text-black font-semibold disabled:opacity-30 transition-colors glitch-hover"
             >
               {stepIndex === ALL_STEPS.length - 2 ? 'Finish →' : 'Next →'}
             </button>
